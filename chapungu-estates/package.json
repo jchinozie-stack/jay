@@ -1,57 +1,19 @@
 {
-  "name": "chapungu-estates",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "db:migrate": "prisma migrate deploy",
-    "db:generate": "prisma generate",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
-    "@prisma/client": "^5.22.0",
-    "@radix-ui/react-accordion": "^1.2.1",
-    "@radix-ui/react-dialog": "^1.1.2",
-    "@radix-ui/react-dropdown-menu": "^2.1.2",
-    "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-navigation-menu": "^1.2.1",
-    "@radix-ui/react-select": "^2.1.2",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-tabs": "^1.1.1",
-    "@radix-ui/react-toast": "^1.2.2",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "lucide-react": "^0.462.0",
-    "next": "15.0.4",
-    "nodemailer": "^6.9.16",
-    "react": "19.0.0",
-    "react-day-picker": "^9.3.1",
-    "react-dom": "19.0.0",
-    "react-hook-form": "^7.53.2",
-    "resend": "^4.0.1",
-    "sharp": "^0.33.5",
-    "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@types/node": "^22.9.1",
-    "@types/nodemailer": "^6.4.16",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.15.0",
-    "eslint-config-next": "15.0.4",
-    "postcss": "^8.4.49",
-    "prisma": "^5.22.0",
-    "tailwindcss": "^3.4.15",
-    "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
-  }
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/shop", "destination": "/butchery" },
+    { "source": "/meat", "destination": "/butchery" }
+  ]
 }
