@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /marketing/
+
+Sitemap: https://chapunguestates.co.zw/sitemap.xml
