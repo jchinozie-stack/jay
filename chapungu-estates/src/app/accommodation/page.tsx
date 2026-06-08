@@ -5,14 +5,8 @@ import { Bed, Users, Wifi, Wind, Tv, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Accommodation in Norton Zimbabwe | Rooms & Suites",
-  description: "Book comfortable rooms at Chapungu Estates Guest House in Norton, Zimbabwe. Standard Room $40, Standard Twin $70, Deluxe Room $60. Free WiFi, TV, Fan, Ensuite.",
-  keywords: ["accommodation Norton Zimbabwe", "guest house Norton", "cheap hotel Norton Zimbabwe"],
+  description: "Book comfortable rooms at Chapungu Estates Guest House. Standard Room $40, Standard Twin $70, Deluxe Room $60.",
   alternates: { canonical: "/accommodation" },
-  openGraph: {
-    title: "Accommodation | Chapungu Estates Norton Zimbabwe",
-    description: "Comfortable rooms at Chapungu Estates Guest House, Norton, Zimbabwe.",
-    images: [{ url: "/images/accommodation-og.jpg", width: 1200, height: 630 }],
-  },
 };
 
 const rooms = [
@@ -49,7 +43,7 @@ const rooms = [
     price: 60,
     beds: "1 King Bed",
     maxGuests: 2,
-    description: "A king bed, two comfortable couches, full ensuite, TV, fan, and free Wi-Fi. Extra space and comfort.",
+    description: "A king bed, two comfortable couches, full ensuite, TV, fan, and free Wi-Fi.",
     amenities: ["1 King Bed", "2 Couches", "Ensuite Bathroom", "TV", "Fan", "Free Wi-Fi"],
     image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=85",
     featured: false,
@@ -74,7 +68,6 @@ const faq = [
 export default function AccommodationPage() {
   return (
     <>
-      {/* Hero */}
       <div className="relative h-72 md:h-96 bg-charcoal overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80" alt="Chapungu Estates Guest House" fill priority className="object-cover opacity-50" sizes="100vw" />
         <div className="absolute inset-0 flex items-end container-site pb-12">
@@ -85,33 +78,28 @@ export default function AccommodationPage() {
         </div>
       </div>
 
-      {/* Check-in bar */}
       <div className="bg-charcoal border-b border-earth-800">
         <div className="container-site py-4">
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm font-body text-earth-300">
             <span>Check-in: <span className="text-white font-medium">14:00 to 21:00</span></span>
             <span>Check-out: <span className="text-white font-medium">10:00</span></span>
-            <span>All rooms: <span className="text-white font-medium">Ensuite · TV · Fan · Wi-Fi</span></span>
+            <span>All rooms: <span className="text-white font-medium">Ensuite &middot; TV &middot; Fan &middot; Wi-Fi</span></span>
           </div>
         </div>
       </div>
 
-      {/* Intro */}
       <div className="bg-cream border-b border-earth-100">
         <div className="container-site py-8">
           <p className="font-body text-earth-600 max-w-xl">3 room types — comfortable, clean, and excellent value. All rooms include a private ensuite bathroom, TV, fan, and free Wi-Fi.</p>
         </div>
       </div>
 
-      {/* Room Listings */}
       <div className="container-site py-16 space-y-12">
         {rooms.map((room, index) => (
           <article key={room.id} className="grid grid-cols-1 lg:grid-cols-2 gap-0 card-luxury overflow-hidden" aria-label={room.name}>
             <div className={"relative h-64 lg:h-auto min-h-72 " + (index % 2 === 1 ? "lg:order-2" : "")}>
               <Image src={room.image} alt={room.name + " at Chapungu Estates"} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-              {room.featured && (
-                <div className="absolute top-4 left-4 bg-brand-500 text-white font-body text-xs font-semibold px-3 py-1 tracking-wide">Popular Choice</div>
-              )}
+              {room.featured && (<div className="absolute top-4 left-4 bg-brand-500 text-white font-body text-xs font-semibold px-3 py-1 tracking-wide">Popular Choice</div>)}
               <div className={"absolute top-4 " + (room.featured ? "left-36" : "left-4")}>
                 <span className={"font-body text-xs text-white font-semibold px-3 py-1 " + categoryColors[room.category]}>{room.category}</span>
               </div>
@@ -121,7 +109,7 @@ export default function AccommodationPage() {
                 <div className="flex items-start justify-between mb-4">
                   <h2 className="font-display text-3xl text-charcoal">{room.name}</h2>
                   <div className="text-right">
-                    <div className="font-display text-4xl text-brand-600 font-light">${"{room.price}"}</div>
+                    <div className="font-display text-4xl text-brand-600 font-light">{"$"}{room.price}</div>
                     <div className="font-body text-xs text-earth-500">per night</div>
                   </div>
                 </div>
@@ -134,9 +122,7 @@ export default function AccommodationPage() {
                 </div>
                 <p className="font-body text-sm text-earth-600 leading-relaxed mb-6">{room.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {room.amenities.map((a) => (
-                    <span key={a} className="font-body text-xs bg-earth-50 border border-earth-100 text-earth-600 px-2.5 py-1">{a}</span>
-                  ))}
+                  {room.amenities.map((a) => (<span key={a} className="font-body text-xs bg-earth-50 border border-earth-100 text-earth-600 px-2.5 py-1">{a}</span>))}
                 </div>
               </div>
               <div className="flex gap-3">
@@ -148,11 +134,10 @@ export default function AccommodationPage() {
         ))}
       </div>
 
-      {/* Amenities */}
       <div className="bg-earth-950 py-16">
         <div className="container-site text-center">
           <div className="section-label text-brand-400 mb-3">All Rooms Include</div>
-          <h2 className="font-display text-4xl text-white font-light mb-12">What&apos;s Included</h2>
+          <h2 className="font-display text-4xl text-white font-light mb-12">{"What's Included"}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {["Free Wi-Fi", "Private Ensuite", "TV", "Fan", "Secure Parking", "Restaurant & Grill", "Grocery Shop", "Kids Play Area"].map((a) => (
               <div key={a} className="text-center p-4 border border-earth-800"><span className="font-body text-sm text-earth-300">{a}</span></div>
@@ -161,25 +146,21 @@ export default function AccommodationPage() {
         </div>
       </div>
 
-      {/* Contact CTA */}
       <div className="bg-brand-600 py-10">
         <div className="container-site text-center">
           <p className="font-display text-2xl text-white font-light mb-2">Ready to book your stay?</p>
-          <p className="font-body text-sm text-brand-100 mb-6">Plot No. 1201, Zvimba Road, Knowe, Norton &nbsp;|&nbsp; +263 78 011 4318 &nbsp;·&nbsp; +263 788 734 125 &nbsp;·&nbsp; +263 788 734 120</p>
+          <p className="font-body text-sm text-brand-100 mb-6">Plot No. 1201, Zvimba Road, Knowe, Norton | +263 78 011 4318 · +263 788 734 125 · +263 788 734 120</p>
           <Link href="/contact" className="inline-block bg-white text-brand-600 font-body font-semibold text-sm px-8 py-3 hover:bg-cream transition-colors">Contact Us to Book</Link>
         </div>
       </div>
 
-      {/* FAQ */}
       <div className="container-site py-16">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12"><div className="section-label mb-3">FAQ</div><h2 className="section-title">Frequently Asked Questions</h2></div>
           <div className="space-y-4">
             {faq.map(({ q, a }) => (
               <details key={q} className="group border border-earth-100 bg-white">
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-display text-lg text-charcoal">
-                  {q}<ChevronRight className="w-5 h-5 text-brand-500 transition-transform group-open:rotate-90" />
-                </summary>
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-display text-lg text-charcoal">{q}<ChevronRight className="w-5 h-5 text-brand-500 transition-transform group-open:rotate-90" /></summary>
                 <div className="px-6 pb-6"><p className="font-body text-sm text-earth-600 leading-relaxed">{a}</p></div>
               </details>
             ))}
