@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bed, Users, Wifi, Wind, Tv } from "lucide-react";
+import { ArrowRight, Bed, Users, Wifi } from "lucide-react";
 
 const rooms = [
   {
@@ -52,8 +52,8 @@ export function AccommodationPreview() {
           </div>
           <div className="max-w-sm">
             <p className="font-body text-earth-600 leading-relaxed mb-4">
-              3 room types — all ensuite with TV, fan, and free Wi-Fi.
-              Check-in 14:00–21:00 &nbsp;·&nbsp; Check-out 10:00.
+              3 room types - all ensuite with TV, fan, and free Wi-Fi.
+              Check-in 14:00 to 21:00. Check-out 10:00.
             </p>
             <Link href="/accommodation" className="inline-flex items-center gap-2 font-body text-sm text-brand-600 font-medium hover:text-brand-700 transition-colors">
               View All Rooms
@@ -61,7 +61,6 @@ export function AccommodationPreview() {
             </Link>
           </div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {rooms.map((room, index) => (
             <article key={room.id} className={"card-luxury group overflow-hidden " + (index === 1 ? "md:mt-8" : "")}>
@@ -118,4 +117,5 @@ export function AccommodationPreview() {
         </div>
       </div>
     </section>
-  );—–·}
+  );
+}
