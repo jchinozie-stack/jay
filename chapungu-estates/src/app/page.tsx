@@ -5,6 +5,7 @@ import { RestaurantPreview } from "@/components/sections/RestaurantPreview";
 import { WeddingsPreview } from "@/components/sections/WeddingsPreview";
 import { ConferencePreview } from "@/components/sections/ConferencePreview";
 import { GalleryPreview } from "@/components/sections/GalleryPreview";
+import { JourneyBuilder } from "@/components/sections/JourneyBuilder";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { MapSection } from "@/components/sections/MapSection";
@@ -30,6 +31,7 @@ export default function HomePage() {
       <WeddingsPreview />
       <ConferencePreview />
       <GalleryPreview />
+      <JourneyBuilder />
       <TestimonialsSection />
       <WhyChooseUs />
       <MapSection />
