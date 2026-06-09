@@ -5,8 +5,8 @@ import { WeddingEnquiryForm } from "@/components/forms/WeddingEnquiryForm";
 
 export const metadata: Metadata = {
   title: "Wedding Venues Zimbabwe | Weddings at Chapungu Estates Norton",
-  description: "Create your dream wedding at Chapungu Estates in Norton, Zimbabwe. Venue and decor included. Packages from $550 for 75 guests.",
-  keywords: ["wedding venues Zimbabwe", "wedding venues Norton", "outdoor weddings Zimbabwe", "wedding packages Zimbabwe"],
+  description: "Create your dream wedding at Chapungu Estates in Norton, Zimbabwe. Venue and decor included. Packages from $550.",
+  keywords: ["wedding venues Zimbabwe", "wedding venues Norton", "outdoor weddings Zimbabwe"],
   alternates: { canonical: "/weddings" },
 };
 
@@ -25,7 +25,7 @@ const packages = [
     includes: ["Venue hire", "Decor included", "Up to 200 guests"] },
 ];
 
-const galleryImages = [
+const gallery = [
   { src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80", alt: "Outdoor ceremony" },
   { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80", alt: "Reception table setup" },
   { src: "https://images.unsplash.com/photo-1547765045-b6e1d9d4f12c?w=600&q=80", alt: "Wedding couple in garden" },
@@ -35,7 +35,6 @@ const galleryImages = [
 export default function WeddingsPage() {
   return (
     <>
-      {/* Hero */}
       <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <Image src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="Wedding ceremony at Chapungu Estates" fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 to-charcoal/70" />
@@ -48,7 +47,6 @@ export default function WeddingsPage() {
         </div>
       </div>
 
-      {/* Intro */}
       <div className="bg-cream py-20">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -56,10 +54,10 @@ export default function WeddingsPage() {
               <div className="section-label mb-3">The Venue</div>
               <h2 className="section-title mb-6">A Setting as Beautiful as<span className="italic text-brand-500"> Your Love</span></h2>
               <p className="font-body text-earth-600 leading-relaxed mb-4 text-lg">Set within expansive grounds in the heart of Norton, Chapungu Estates provides a beautiful canvas for your wedding day.</p>
-              <p className="font-body text-earth-600 leading-relaxed mb-8">All wedding packages include venue and decor. Contact us to discuss catering, entertainment, photography, and any other extras to make your day perfect.</p>
+              <p className="font-body text-earth-600 leading-relaxed mb-8">All wedding packages include venue and decor. Contact us to discuss catering, entertainment, photography, and any extras to make your day perfect.</p>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              {galleryImages.map((img, i) => (
+              {gallery.map((img, i) => (
                 <div key={i} className={"relative overflow-hidden " + (i === 0 ? "col-span-2 h-64" : "h-40")}>
                   <Image src={img.src} alt={img.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 400px" />
                 </div>
@@ -69,20 +67,17 @@ export default function WeddingsPage() {
         </div>
       </div>
 
-      {/* Packages */}
       <div id="packages" className="bg-earth-950 py-20">
         <div className="container-site">
           <div className="text-center mb-16">
             <div className="section-label text-brand-400 mb-3">Packages</div>
             <h2 className="font-display text-5xl text-white font-light">Wedding<span className="italic text-brand-300"> Packages</span></h2>
-            <p className="font-body text-earth-400 mt-3">Venue and decor included in all packages. Basic fees - extras at additional cost.</p>
+            <p className="font-body text-earth-400 mt-3">Venue and decor included. Basic fees - extras at additional cost.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {packages.map((pkg) => (
               <div key={pkg.name} className={"relative p-8 border " + (pkg.featured ? "border-brand-500 bg-charcoal" : "border-earth-800 bg-earth-900")}>
-                {pkg.featured && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-500 text-white font-body text-xs font-semibold px-4 py-1 tracking-wide">Most Popular</div>
-                )}
+                {pkg.featured && (<div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-500 text-white font-body text-xs font-semibold px-4 py-1 tracking-wide">Most Popular</div>)}
                 <div className="font-display text-2xl text-white mb-1">{pkg.name}</div>
                 <div className="font-body text-xs text-brand-400 font-medium tracking-wide mb-3">{pkg.guests} guests</div>
                 <div className="font-display text-4xl text-brand-400 font-light mb-1">{"$"}{pkg.price}</div>
@@ -96,26 +91,21 @@ export default function WeddingsPage() {
                     </li>
                   ))}
                 </ul>
-                <a href="#enquiry" className={pkg.featured ? "btn-gold w-full text-center justify-center" : "btn-outline-gold border-earth-600 text-earth-300 hover:text-white hover:border-brand-500 w-full text-center justify-center"}>
-                  Enquire Now
-                </a>
+                <a href="#enquiry" className={pkg.featured ? "btn-gold w-full text-center justify-center" : "btn-outline-gold border-earth-600 text-earth-300 hover:text-white hover:border-brand-500 w-full text-center justify-center"}>Enquire Now</a>
               </div>
             ))}
           </div>
-          <p className="text-center text-earth-500 text-xs mt-10 max-w-lg mx-auto">
-            Please note these are basic fees. Extras such as catering, entertainment, photography, and additional decor are available at an extra cost.
-          </p>
+          <p className="text-center text-earth-500 text-xs mt-10 max-w-lg mx-auto">Please note these are basic fees. Extras such as catering, entertainment, photography, and additional decor are available at an extra cost.</p>
         </div>
       </div>
 
-      {/* Enquiry Form */}
       <div id="enquiry" className="bg-cream py-20">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
               <div className="section-label mb-3">Get in Touch</div>
               <h2 className="section-title mb-4">Start Planning Your<span className="italic text-brand-500"> Dream Wedding</span></h2>
-              <p className="font-body text-earth-600 leading-relaxed mb-6">Complete the form and our team will be in touch within 24 hours to discuss your vision.</p>
+              <p className="font-body text-earth-600 leading-relaxed mb-6">Complete the form and our team will be in touch within 24 hours.</p>
               <div className="bg-brand-50 border border-brand-100 p-6">
                 <div className="font-display text-lg text-charcoal mb-2">Contact Us</div>
                 <div className="font-body text-sm text-earth-600 mt-1"><a href="tel:+263780114318" className="hover:text-brand-600 transition-colors">+263 78 011 4318</a></div>
@@ -123,239 +113,6 @@ export default function WeddingsPage() {
               </div>
             </div>
             <div className="lg:col-span-3"><WeddingEnquiryForm /></div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}import type { Metadata } from "next";
-import Image from "next/image";
-import { Check } from "lucide-react";
-import { WeddingEnquiryForm } from "@/components/forms/WeddingEnquiryForm";
-
-export const metadata: Metadata = {
-  title: "Wedding Venues Zimbabwe | Weddings at Chapungu Estates Norton",
-  description:
-    "Create your dream wedding at Chapungu Estates in Norton, Zimbabwe. Beautiful outdoor venues, indoor ballroom, comprehensive packages for up to 300 guests. Request a quote today.",
-  keywords: ["wedding venues Zimbabwe", "wedding venues Norton", "outdoor weddings Zimbabwe", "wedding packages Zimbabwe"],
-  alternates: { canonical: "/weddings" },
-};
-
-const packages = [
-  {
-    name: "Intimate Affair",
-    guests: "Up to 50",
-    price: "From $3,500",
-    description: "A perfectly curated celebration for close family and friends.",
-    includes: [
-      "Exclusive use of garden gazebo",
-      "5-hour reception",
-      "3-course sit-down dinner",
-      "Canapé welcome reception",
-      "Floral centrepieces",
-      "Wedding cake",
-      "Dedicated events coordinator",
-      "Bridal suite accommodation",
-    ],
-  },
-  {
-    name: "Garden Celebration",
-    guests: "Up to 150",
-    price: "From $8,500",
-    description: "Our most popular package — elegant outdoor romance at its finest.",
-    includes: [
-      "Exclusive use of estate gardens",
-      "8-hour reception",
-      "4-course dinner",
-      "Cocktail hour & canapés",
-      "Professional floral arrangements",
-      "2-tier wedding cake",
-      "Full AV & lighting setup",
-      "Dedicated events team",
-      "Bridal suite + 5 rooms",
-      "Free corkage",
-    ],
-    featured: true,
-  },
-  {
-    name: "Grand Estate",
-    guests: "Up to 300",
-    price: "From $18,000",
-    description: "The ultimate Chapungu experience — a wedding worthy of legend.",
-    includes: [
-      "Full estate exclusive buyout",
-      "12-hour event",
-      "5-course gala dinner",
-      "Full open bar",
-      "Master floral design",
-      "Custom 3-tier wedding cake",
-      "Live entertainment stage",
-      "Full AV & uplighting",
-      "Dedicated wedding planner",
-      "15 rooms for 2 nights",
-      "Honeymoon suite",
-    ],
-  },
-];
-
-const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80", alt: "Outdoor ceremony with floral arch" },
-  { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80", alt: "Elegant reception table setup" },
-  { src: "https://images.unsplash.com/photo-1547765045-b6e1d9d4f12c?w=600&q=80", alt: "Wedding couple in garden" },
-  { src: "https://images.unsplash.com/photo-1525243498357-b9d6c1e4b1b3?w=600&q=80", alt: "Bride and bridesmaids" },
-  { src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80", alt: "Evening reception lighting" },
-  { src: "https://images.unsplash.com/photo-1504016798967-59a258e8a579?w=600&q=80", alt: "Wedding cake at Chapungu Estates" },
-];
-
-export default function WeddingsPage() {
-  return (
-    <>
-      {/* Hero */}
-      <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80"
-          alt="Beautiful wedding ceremony at Chapungu Estates"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 to-charcoal/70" />
-        <div className="absolute inset-0 flex items-center justify-center text-center">
-          <div>
-            <div className="section-label text-brand-300 mb-3">Weddings</div>
-            <h1 className="font-display text-6xl md:text-7xl text-white font-light leading-tight">
-              Your Perfect
-              <span className="block italic text-brand-300">Wedding Day</span>
-            </h1>
-            <p className="font-body text-white/80 text-lg mt-4 max-w-xl mx-auto">
-              Where love stories become timeless memories
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Intro */}
-      <div className="bg-cream py-20">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <div className="section-label mb-3">The Venue</div>
-              <h2 className="section-title mb-6">
-                A Setting as Beautiful as
-                <span className="italic text-brand-500"> Your Love</span>
-              </h2>
-              <p className="font-body text-earth-600 leading-relaxed mb-4 text-lg">
-                Set within expansive grounds in the heart of Norton, Chapungu Estates 
-                provides a canvas of natural beauty for your wedding day. Lush gardens, 
-                indigenous trees, and stunning outdoor spaces combine to create an 
-                atmosphere of romantic elegance.
-              </p>
-              <p className="font-body text-earth-600 leading-relaxed mb-8">
-                Our experienced wedding coordinator will work with you every step of the way, 
-                from initial planning through to your last dance, ensuring every detail is 
-                executed flawlessly.
-              </p>
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { num: "300", label: "Max Guests" },
-                  { num: "5+", label: "Venue Spaces" },
-                  { num: "100+", label: "Weddings Hosted" },
-                ].map(({ num, label }) => (
-                  <div key={label} className="text-center p-4 bg-brand-50 border border-brand-100">
-                    <div className="font-display text-4xl text-brand-600 font-light">{num}</div>
-                    <div className="font-body text-xs text-earth-600 mt-1">{label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {galleryImages.slice(0, 4).map((img, i) => (
-                <div key={i} className={`relative overflow-hidden ${i === 0 ? "col-span-2 h-64" : "h-40"}`}>
-                  <Image src={img.src} alt={img.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 400px" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Packages */}
-      <div id="packages" className="bg-earth-950 py-20">
-        <div className="container-site">
-          <div className="text-center mb-16">
-            <div className="section-label text-brand-400 mb-3">Packages</div>
-            <h2 className="font-display text-5xl text-white font-light">
-              Wedding
-              <span className="italic text-brand-300"> Packages</span>
-            </h2>
-            <p className="font-body text-earth-400 mt-3">All packages are fully customisable. Prices are indicative — contact us for a tailored quote.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packages.map((pkg) => (
-              <div
-                key={pkg.name}
-                className={`relative p-8 border ${
-                  pkg.featured
-                    ? "border-brand-500 bg-charcoal"
-                    : "border-earth-800 bg-earth-900"
-                }`}
-              >
-                {pkg.featured && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-500 text-white font-body text-xs font-semibold px-4 py-1 tracking-wide">
-                    Most Popular
-                  </div>
-                )}
-                <div className="font-display text-2xl text-white mb-1">{pkg.name}</div>
-                <div className="font-body text-xs text-brand-400 font-medium tracking-wide mb-2">{pkg.guests} guests</div>
-                <div className="font-display text-3xl text-brand-400 font-light mb-4">{pkg.price}</div>
-                <p className="font-body text-sm text-earth-400 mb-6 leading-relaxed">{pkg.description}</p>
-                <ul className="space-y-2.5 mb-8" role="list">
-                  {pkg.includes.map((item) => (
-                    <li key={item} className="flex gap-2 font-body text-xs text-earth-300">
-                      <Check className="w-3.5 h-3.5 text-brand-400 mt-0.5 shrink-0" aria-hidden="true" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a href="#enquiry" className={pkg.featured ? "btn-gold w-full text-center justify-center" : "btn-outline-gold border-earth-600 text-earth-300 hover:text-white hover:border-brand-500 w-full text-center justify-center"}>
-                  Enquire Now
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Enquiry Form */}
-      <div id="enquiry" className="bg-cream py-20">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2">
-              <div className="section-label mb-3">Get in Touch</div>
-              <h2 className="section-title mb-4">
-                Start Planning Your
-                <span className="italic text-brand-500"> Dream Wedding</span>
-              </h2>
-              <p className="font-body text-earth-600 leading-relaxed mb-6">
-                Complete the form and one of our dedicated wedding coordinators will 
-                be in touch within 24 hours to discuss your vision and begin the 
-                planning journey.
-              </p>
-              <div className="bg-brand-50 border border-brand-100 p-6">
-                <div className="font-display text-lg text-charcoal mb-2">Wedding Coordinator</div>
-                <div className="font-body text-sm text-earth-600">Grace Mpofu</div>
-                <div className="font-body text-sm text-earth-600 mt-1">
-                  <a href="tel:+2637198765432" className="hover:text-brand-600 transition-colors">+263 71 987 6543</a>
-                </div>
-                <div className="font-body text-sm text-earth-600 mt-1">
-                  <a href="mailto:weddings@chapunguEstates.co.zw" className="hover:text-brand-600 transition-colors">weddings@chapunguEstates.co.zw</a>
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-3">
-              <WeddingEnquiryForm />
-            </div>
           </div>
         </div>
       </div>
