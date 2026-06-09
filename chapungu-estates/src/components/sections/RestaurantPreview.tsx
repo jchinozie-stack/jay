@@ -7,7 +7,6 @@ export function RestaurantPreview() {
     <section className="py-24 lg:py-32 bg-charcoal grain-overlay overflow-hidden" aria-labelledby="restaurant-heading">
       <div className="container-site">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
           <div className="text-white">
             <div className="section-label text-brand-400 mb-4">Restaurant & Braai</div>
             <h2 id="restaurant-heading" className="font-display text-5xl lg:text-6xl text-white font-light leading-tight mb-6">
@@ -15,11 +14,11 @@ export function RestaurantPreview() {
               <span className="block italic text-brand-300">Zimbabwe</span>
             </h2>
             <p className="font-body text-earth-300 leading-relaxed mb-8 text-lg">
-              Our kitchen celebrates the rich tapestry of Zimbabwean cuisine — from 
-              traditional slow-braised meats to contemporary African fusion. Every dish 
+              Our kitchen celebrates the rich tapestry of Zimbabwean cuisine — from
+              traditional slow-braised meats to contemporary African fusion. Every dish
               tells a story, every meal creates a memory.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-6 mb-10">
               <div className="border-l-2 border-brand-500 pl-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -45,12 +44,11 @@ export function RestaurantPreview() {
             </div>
           </div>
 
-          {/* Images */}
           <div className="relative h-[500px] lg:h-[600px]">
             <div className="absolute top-0 right-0 w-3/4 h-3/4 overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
-                alt="Fine dining at Chapungu Estates restaurant"
+                src="/images/TIN05190.jpg"
+                alt="Chapungu Grill chef at the charcoal grill"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 60vw, 30vw"
@@ -58,8 +56,8 @@ export function RestaurantPreview() {
             </div>
             <div className="absolute bottom-0 left-0 w-2/3 h-2/3 overflow-hidden border-4 border-charcoal">
               <Image
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80"
-                alt="Traditional braai and grilled meats at Chapungu Estates"
+                src="/images/TIN05178 (1).jpg"
+                alt="Freshly grilled chicken at Chapungu Grill"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 50vw, 25vw"
