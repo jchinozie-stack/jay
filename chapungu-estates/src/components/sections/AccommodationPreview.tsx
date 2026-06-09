@@ -3,39 +3,9 @@ import Link from "next/link";
 import { ArrowRight, Bed, Users, Wifi } from "lucide-react";
 
 const rooms = [
-  {
-    id: "standard-room",
-    name: "Standard Room",
-    category: "Standard",
-    price: 40,
-    beds: "1 Double Bed",
-    guests: 2,
-    amenities: ["Ensuite", "TV", "Fan"],
-    image: "/images/TIN05190.jpg",
-    href: "/accommodation/standard-room",
-  },
-  {
-    id: "standard-twin",
-    name: "Standard Twin",
-    category: "Twin",
-    price: 70,
-    beds: "2 Double Beds",
-    guests: 4,
-    amenities: ["Ensuite", "TV", "Fan"],
-    image: "/images/TIN05027.jpg",
-    href: "/accommodation/standard-twin",
-  },
-  {
-    id: "deluxe-room",
-    name: "Deluxe Room",
-    category: "Deluxe",
-    price: 60,
-    beds: "1 King Bed",
-    guests: 2,
-    amenities: ["Ensuite", "2 Couches", "TV", "Fan"],
-    image: "/images/TIN05061 (2).jpg",
-    href: "/accommodation/deluxe-room",
-  },
+  { id: "standard-room", name: "Standard Room", category: "Standard", price: 40, beds: "1 Double Bed", guests: 2, amenities: ["Ensuite", "TV", "Fan"], image: "/images/TIN05139 (1).jpg", href: "/accommodation/standard-room" },
+  { id: "standard-twin", name: "Standard Twin", category: "Twin", price: 70, beds: "2 Double Beds", guests: 4, amenities: ["Ensuite", "TV", "Fan"], image: "/images/TIN05139 (1).jpg", href: "/accommodation/standard-twin" },
+  { id: "deluxe-room", name: "Deluxe Room", category: "Deluxe", price: 60, beds: "1 King Bed", guests: 2, amenities: ["Ensuite", "2 Couches", "TV", "Fan"], image: "/images/TIN05139 (1).jpg", href: "/accommodation/deluxe-room" },
 ];
 
 export function AccommodationPreview() {
@@ -54,22 +24,15 @@ export function AccommodationPreview() {
             <p className="font-body text-earth-600 leading-relaxed mb-4">
               3 room types — all ensuite with TV, fan, and free Wi-Fi. Check-in 14:00 to 21:00. Check-out 10:00.
             </p>
-            <Link
-              href="/accommodation"
-              className="inline-flex items-center gap-2 font-body text-sm text-brand-600 font-medium hover:text-brand-700 transition-colors"
-            >
+            <Link href="/accommodation" className="inline-flex items-center gap-2 font-body text-sm text-brand-600 font-medium hover:text-brand-700 transition-colors">
               View All Rooms
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {rooms.map((room, index) => (
-            <article
-              key={room.id}
-              className={"card-luxury group overflow-hidden " + (index === 1 ? "md:mt-8" : "")}
-            >
+            <article key={room.id} className={"card-luxury group overflow-hidden " + (index === 1 ? "md:mt-8" : "")}>
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={room.image}
@@ -96,33 +59,20 @@ export function AccommodationPreview() {
                   {room.name}
                 </h3>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="flex items-center gap-1.5 font-body text-xs text-earth-500">
-                    <Bed className="w-3.5 h-3.5" />{room.beds}
-                  </span>
-                  <span className="flex items-center gap-1.5 font-body text-xs text-earth-500">
-                    <Users className="w-3.5 h-3.5" />Up to {room.guests}
-                  </span>
-                  <span className="flex items-center gap-1.5 font-body text-xs text-earth-500">
-                    <Wifi className="w-3.5 h-3.5" />Wi-Fi
-                  </span>
+                  <span className="flex items-center gap-1.5 font-body text-xs text-earth-500"><Bed className="w-3.5 h-3.5" />{room.beds}</span>
+                  <span className="flex items-center gap-1.5 font-body text-xs text-earth-500"><Users className="w-3.5 h-3.5" />Up to {room.guests}</span>
+                  <span className="flex items-center gap-1.5 font-body text-xs text-earth-500"><Wifi className="w-3.5 h-3.5" />Wi-Fi</span>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {room.amenities.map((amenity) => (
-                    <span
-                      key={amenity}
-                      className="font-body text-xs text-earth-600 bg-earth-50 border border-earth-100 px-2.5 py-1"
-                    >
+                    <span key={amenity} className="font-body text-xs text-earth-600 bg-earth-50 border border-earth-100 px-2.5 py-1">
                       {amenity}
                     </span>
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <Link href={room.href} className="flex-1 btn-gold text-center justify-center text-xs py-2.5">
-                    Book Now
-                  </Link>
-                  <Link href={room.href} className="flex-1 btn-outline-gold text-center justify-center text-xs py-2.5">
-                    View Details
-                  </Link>
+                  <Link href={room.href} className="flex-1 btn-gold text-center justify-center text-xs py-2.5">Book Now</Link>
+                  <Link href={room.href} className="flex-1 btn-outline-gold text-center justify-center text-xs py-2.5">View Details</Link>
                 </div>
               </div>
             </article>
