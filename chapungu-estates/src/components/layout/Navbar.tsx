@@ -13,17 +13,16 @@ const navigation = [
     href: "/accommodation",
     children: [
       { name: "All Rooms", href: "/accommodation" },
-      { name: "Suites", href: "/accommodation?category=suites" },
-      { name: "Chalets", href: "/accommodation?category=chalets" },
-      { name: "Standard Rooms", href: "/accommodation?category=standard" },
+      { name: "Standard Room", href: "/accommodation/standard-room" },
+      { name: "Standard Twin", href: "/accommodation/standard-twin" },
+      { name: "Deluxe Room", href: "/accommodation/deluxe-room" },
     ],
   },
   {
     name: "Dine",
     href: "/restaurant",
     children: [
-      { name: "Restaurant", href: "/restaurant" },
-      { name: "Braai & Grill", href: "/restaurant#braai" },
+      { name: "Restaurant & Grill", href: "/restaurant" },
       { name: "Reserve a Table", href: "/restaurant#reservations" },
     ],
   },
@@ -33,7 +32,7 @@ const navigation = [
     children: [
       { name: "Weddings", href: "/weddings" },
       { name: "Conferences", href: "/conferences" },
-      { name: "Private Events", href: "/events" },
+      { name: "Birthday & Functions", href: "/events" },
     ],
   },
   { name: "Gallery", href: "/gallery" },
@@ -163,12 +162,12 @@ export function Navbar() {
         {/* CTA + Mobile Toggle */}
         <div className="flex items-center gap-3">
           <a
-            href="tel:+2637123456789"
+            href="tel:+263780114318"
             className="hidden md:flex items-center gap-1.5 text-brand-400 hover:text-brand-300 transition-colors text-sm font-body font-medium"
             aria-label="Call us"
           >
             <Phone className="w-3.5 h-3.5" />
-            <span className="hidden xl:inline">+263 71 234 5678</span>
+            <span className="hidden xl:inline">+263 78 011 4318</span>
           </a>
           <Link
             href="/accommodation"
@@ -225,11 +224,11 @@ export function Navbar() {
             ))}
             <div className="pt-4 pb-2 flex flex-col gap-3">
               <a
-                href="tel:+2637123456789"
+                href="tel:+263780114318"
                 className="flex items-center gap-2 px-4 py-3 text-brand-400 font-body font-medium"
               >
                 <Phone className="w-4 h-4" />
-                +263 71 234 5678
+                +263 78 011 4318
               </a>
               <Link href="/accommodation" className="btn-gold text-center mx-4">
                 Book Now
