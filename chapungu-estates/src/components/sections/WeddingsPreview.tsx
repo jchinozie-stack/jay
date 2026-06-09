@@ -14,11 +14,10 @@ export function WeddingsPreview() {
     <section className="py-24 lg:py-32 bg-cream" aria-labelledby="weddings-heading">
       <div className="container-site">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Images */}
           <div className="relative">
             <div className="aspect-[4/5] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"
+                src="/images/Tent 2.jpg"
                 alt="Elegant wedding ceremony venue at Chapungu Estates"
                 fill
                 className="object-cover"
@@ -27,7 +26,7 @@ export function WeddingsPreview() {
             </div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 overflow-hidden hidden lg:block border-4 border-cream">
               <Image
-                src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80"
+                src="/images/Tent 4.jpg"
                 alt="Wedding reception setup at Chapungu Estates"
                 fill
                 className="object-cover"
@@ -40,7 +39,6 @@ export function WeddingsPreview() {
             </div>
           </div>
 
-          {/* Content */}
           <div className="lg:pl-8">
             <div className="section-label mb-3">Weddings & Events</div>
             <h2 id="weddings-heading" className="section-title mb-6">
@@ -48,8 +46,8 @@ export function WeddingsPreview() {
               <span className="block italic text-brand-500">Wedding Day</span>
             </h2>
             <p className="font-body text-earth-600 leading-relaxed mb-8 text-lg">
-              Set against the natural beauty of Zimbabwe&apos;s landscape, Chapungu Estates 
-              creates the backdrop for weddings that are as timeless as love itself. 
+              Set against the natural beauty of Zimbabwe&apos;s landscape, Chapungu Estates
+              creates the backdrop for weddings that are as timeless as love itself.
               Our dedicated events team handles every detail with grace and precision.
             </p>
 
