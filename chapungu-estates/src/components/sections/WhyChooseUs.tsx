@@ -1,63 +1,98 @@
-import { Shield, MapPin, Clock, Award, Leaf, Heart } from "lucide-react";
+import Image from "next/image";
+import { Heart, MapPin, Award } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 
-const reasons = [
+const pillars = [
   {
-    icon: Award,
-    title: "Premium Quality",
-    description: "Every aspect of your experience is crafted to the highest standard — from thread counts to table settings.",
+    icon: Heart,
+    title: "Authentic Hospitality",
+    tags: ["Family Warmth", "24/7 Service", "Zimbabwean Soul", "Gated & Secure"],
+    body: "Service that feels like family. Our team carries the warmth of Zimbabwe into every welcome, every meal, every detail of your stay.",
   },
   {
     icon: MapPin,
     title: "Prime Location",
-    description: "Conveniently located in Norton with easy access from Harare, yet peacefully removed from city noise.",
+    tags: ["40 Min from Harare", "Norton Lakeside", "Natural Setting", "Easy Access"],
+    body: "Peacefully removed from the city yet effortlessly reachable — set among indigenous gardens just off the Bulawayo Road.",
   },
   {
-    icon: Clock,
-    title: "24/7 Service",
-    description: "Our dedicated team is available around the clock to ensure your every need is met with a smile.",
-  },
-  {
-    icon: Leaf,
-    title: "Natural Setting",
-    description: "Set amidst lush African landscape with indigenous flora and fauna creating a serene sanctuary.",
-  },
-  {
-    icon: Heart,
-    title: "Authentic Hospitality",
-    description: "Experience the warmth and generosity of true Zimbabwean hospitality — it's in our DNA.",
-  },
-  {
-    icon: Shield,
-    title: "Safe & Secure",
-    description: "Your safety and privacy are paramount. Gated premises with 24-hour security give you complete peace of mind.",
+    icon: Award,
+    title: "Premium Quality",
+    tags: ["Fine Dining", "Estate Butchery", "Luxury Linen", "Event-Ready"],
+    body: "From thread counts to table settings, every aspect of the estate is held to a single standard: would we offer this to our own family?",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 lg:py-32 bg-cream" aria-labelledby="why-heading">
-      <div className="container-site">
-        <Reveal className="text-center max-w-2xl mx-auto mb-16">
-          <div className="section-label mb-3">Why Chapungu</div>
-          <h2 id="why-heading" className="section-title">
-            An Experience Like
-            <span className="italic text-brand-500"> No Other</span>
-          </h2>
-          <p className="font-body text-earth-600 mt-4 leading-relaxed">
-            We don&apos;t just offer accommodation — we curate memorable experiences 
-            that connect you to the soul of Zimbabwe.
-          </p>
-        </Reveal>
+    <section
+      className="relative min-h-screen overflow-hidden bg-charcoal"
+      aria-labelledby="why-heading"
+    >
+      {/* Full-bleed estate backdrop */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/TIN05061 (2).jpg"
+          alt=""
+          fill
+          className="object-cover"
+          aria-hidden="true"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-charcoal/55" />
+      </div>
 
-        <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" interval={0.08}>
-          {reasons.map(({ icon: Icon, title, description }) => (
-            <StaggerItem key={title} className="group">
-              <div className="w-12 h-12 bg-brand-50 border border-brand-100 flex items-center justify-center mb-4 group-hover:bg-brand-500 transition-colors duration-300">
-                <Icon className="w-5 h-5 text-brand-500 group-hover:text-white transition-colors duration-300" aria-hidden="true" />
+      <div className="relative z-10 px-6 md:px-16 lg:px-20 pt-28 pb-12 flex flex-col min-h-screen">
+        {/* Header */}
+        <div className="mb-auto">
+          <Reveal>
+            <p className="text-sm font-body text-white/80 mb-6">// Why Chapungu</p>
+            <h2
+              id="why-heading"
+              className="font-display italic text-white text-6xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-tight"
+            >
+              Hospitality
+              <br />
+              elevated
+            </h2>
+          </Reveal>
+        </div>
+
+        {/* Glass pillar cards */}
+        <Stagger
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
+          interval={0.12}
+        >
+          {pillars.map(({ icon: Icon, title, tags, body }) => (
+            <StaggerItem key={title}>
+              <div className="liquid-glass rounded-[1.25rem] p-6 min-h-[360px] flex flex-col h-full">
+                <div className="flex items-start justify-between gap-4">
+                  <span className="liquid-glass rounded-[0.75rem] w-11 h-11 flex items-center justify-center shrink-0">
+                    <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
+                  </span>
+                  <span className="flex flex-wrap justify-end gap-1.5 max-w-[70%]">
+                    {tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="liquid-glass rounded-full px-3 py-1 text-[11px] text-white/90 font-body whitespace-nowrap"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </span>
+                </div>
+
+                <div className="flex-1" />
+
+                <div className="mt-6">
+                  <h3 className="font-display italic text-white text-3xl md:text-4xl tracking-tight leading-none">
+                    {title}
+                  </h3>
+                  <p className="mt-3 text-sm text-white/90 font-body font-light leading-snug max-w-[32ch]">
+                    {body}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-display text-xl text-charcoal mb-2">{title}</h3>
-              <p className="font-body text-sm text-earth-600 leading-relaxed">{description}</p>
             </StaggerItem>
           ))}
         </Stagger>
