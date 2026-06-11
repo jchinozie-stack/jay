@@ -15,6 +15,7 @@ const rooms = [
     description: "Wake up in your own peaceful corner of the estate. Natural light, a comfortable double bed, and all the essentials done beautifully.",
     price: 40,
     detail: "Ensuite · Double Bed · Sleeps 2",
+    tags: ["Ensuite", "Double Bed", "Sleeps 2"],
     image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=85",
     href: "/accommodation/standard-room",
   },
@@ -25,6 +26,7 @@ const rooms = [
     description: "Two generous double beds, a private ensuite, and enough room for everyone to feel at home. The estate is right outside your door.",
     price: 70,
     detail: "Ensuite · 2 Double Beds · Sleeps 4",
+    tags: ["Ensuite", "2 Double Beds", "Sleeps 4"],
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900&q=85",
     href: "/accommodation/standard-twin",
     featured: true,
@@ -36,6 +38,7 @@ const rooms = [
     description: "A king bed, two lounge chairs, and a sense of space that makes you never want to leave. Our most requested room — for good reason.",
     price: 60,
     detail: "Ensuite · King Bed · 2 Loungers · Sleeps 2",
+    tags: ["Ensuite", "King Bed", "2 Loungers", "Sleeps 2"],
     image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=85",
     href: "/accommodation/deluxe-room",
   },
@@ -90,6 +93,17 @@ export function AccommodationPreview() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </motion.div>
+                {/* Glass tag pills */}
+                <div className="absolute top-5 right-5 flex flex-wrap justify-end gap-1.5 max-w-[70%]">
+                  {room.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="liquid-glass rounded-full px-3 py-1 text-[11px] text-white/95 font-body whitespace-nowrap"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 {/* Hover reveal: room details rise from the bottom edge */}
                 <motion.div
                   className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/90 via-charcoal/60 to-transparent px-6 pt-14 pb-5 hidden lg:block"
@@ -105,7 +119,7 @@ export function AccommodationPreview() {
                 </motion.div>
                 {room.featured && (
                   <div className="absolute top-5 left-5">
-                    <span className="font-body text-xs tracking-[0.2em] uppercase bg-brand-500 text-white px-3 py-1.5">
+                    <span className="font-body text-xs tracking-[0.2em] uppercase bg-brand-500/90 backdrop-blur-sm text-white px-4 py-1.5 rounded-full">
                       Most Popular
                     </span>
                   </div>
