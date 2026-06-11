@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { OurStory } from "@/components/sections/OurStory";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { AccommodationPreview } from "@/components/sections/AccommodationPreview";
 import { RestaurantPreview } from "@/components/sections/RestaurantPreview";
 import { WeddingsPreview } from "@/components/sections/WeddingsPreview";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <HomeStructuredData />
       <HeroSection />
       <OurStory />
+      <WhyChooseUs />
       <AccommodationPreview />
       <RestaurantPreview />
       <WeddingsPreview />
