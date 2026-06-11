@@ -93,15 +93,19 @@ export function AccommodationPreview() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </motion.div>
-                {/* Glass tag pills */}
+                {/* Glass tag pills — staggered blur-in */}
                 <div className="absolute top-5 right-5 flex flex-wrap justify-end gap-1.5 max-w-[70%]">
-                  {room.tags.map((tag) => (
-                    <span
+                  {room.tags.map((tag, ti) => (
+                    <motion.span
                       key={tag}
+                      initial={reduce ? { opacity: 0 } : { opacity: 0, y: -10, filter: "blur(6px)" }}
+                      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      viewport={{ once: true, amount: 0.4 }}
+                      transition={{ duration: 0.5, delay: 0.35 + ti * 0.09, ease: luxuryEase }}
                       className="liquid-glass rounded-full px-3 py-1 text-[11px] text-white/95 font-body whitespace-nowrap"
                     >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
                 {/* Hover reveal: room details rise from the bottom edge */}
