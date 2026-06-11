@@ -3,24 +3,39 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight, Clock, Globe } from "lucide-react";
 import {
   motion,
   useReducedMotion,
   useScroll,
   useTransform,
-  type Variants,
 } from "framer-motion";
+import { BlurText } from "@/components/motion/BlurText";
 
 const luxuryEase = [0.21, 0.47, 0.32, 0.98] as const;
 
-const lineVariants: Variants = {
-  hidden: { opacity: 0, y: "0.6em" },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1, delay: 0.35 + i * 0.18, ease: luxuryEase },
-  }),
-};
+const entrance = (reduce: boolean | null, delay: number) => ({
+  initial: reduce
+    ? { opacity: 0 }
+    : { filter: "blur(10px)", opacity: 0, y: 20 },
+  animate: reduce
+    ? { opacity: 1 }
+    : { filter: "blur(0px)", opacity: 1, y: 0 },
+  transition: { duration: 0.8, delay, ease: "easeOut" as const },
+});
+
+const stats = [
+  { icon: Clock, value: "10+", label: "Years of Zimbabwean hospitality" },
+  { icon: Globe, value: "500+", label: "Weddings & celebrations hosted" },
+];
+
+const offerings = [
+  { name: "Stay", href: "/accommodation" },
+  { name: "Dine", href: "/restaurant" },
+  { name: "Weddings", href: "/weddings" },
+  { name: "Conferences", href: "/conferences" },
+  { name: "Gallery", href: "/gallery" },
+];
 
 export function HeroSection() {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -40,7 +55,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col overflow-hidden"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-charcoal"
       aria-label="Welcome to Chapungu Estates"
     >
       {/* Full-bleed background with parallax drift + slow settle */}
@@ -65,108 +80,118 @@ export function HeroSection() {
             sizes="100vw"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-charcoal/20 to-charcoal/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/10 to-charcoal/70" />
       </motion.div>
 
       <motion.div
-        className="relative z-10 flex-1 flex items-center container-site"
+        className="relative z-10 flex-1 flex flex-col items-center justify-center text-center container-site pt-28 px-4"
         style={reduce ? undefined : { y: contentY, opacity: contentOpacity }}
       >
-        <div className="max-w-3xl pt-24">
+        {/* Glass badge */}
+        <motion.div {...entrance(reduce, 0.4)}>
+          <div className="liquid-glass rounded-full inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5">
+            <span className="bg-white text-charcoal rounded-full px-3 py-1 text-xs font-body font-semibold">
+              New
+            </span>
+            <span className="text-sm text-white/90 font-body">
+              Online ordering now live at the Grill & Butchery
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Word-by-word blur headline */}
+        <h1 className="mt-7 font-display text-6xl md:text-7xl lg:text-[5.5rem] text-white leading-[0.9] tracking-tight max-w-3xl">
+          <BlurText
+            delay={0.5}
+            stagger={0.1}
+            words={[
+              { text: "Where", className: "font-light" },
+              { text: "Every", className: "font-light" },
+              { text: "Moment", className: "italic text-brand-300 font-normal" },
+              { text: "Matters.", className: "font-light" },
+            ]}
+          />
+        </h1>
+
+        <motion.p
+          className="mt-5 text-sm md:text-base text-white/90 max-w-xl font-body font-light leading-snug"
+          {...entrance(reduce, 0.9)}
+        >
+          Discover the warmth of Zimbabwe in ways once unimaginable. Our estate
+          brings world-class stays, dining, and celebrations within reach —
+          serene and extraordinary.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          className="flex items-center gap-6 mt-7"
+          {...entrance(reduce, 1.15)}
+        >
           <motion.div
-            className="flex items-center gap-3 mb-8"
-            initial={reduce ? { opacity: 0 } : "hidden"}
-            animate={reduce ? { opacity: 1 } : "visible"}
+            whileHover={reduce ? undefined : { scale: 1.04 }}
+            whileTap={reduce ? undefined : { scale: 0.97 }}
           >
-            <motion.div
-              className="h-px w-12 bg-brand-400 origin-left"
-              variants={{
-                hidden: { scaleX: 0 },
-                visible: { scaleX: 1, transition: { duration: 0.9, delay: 0.25, ease: luxuryEase } },
-              }}
-            />
-            <motion.span
-              className="font-body text-xs tracking-[0.3em] uppercase text-brand-300"
-              variants={{
-                hidden: { opacity: 0, x: -8 },
-                visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.4, ease: luxuryEase } },
-              }}
+            <Link
+              href="/accommodation"
+              className="liquid-glass-strong rounded-full inline-flex items-center gap-2 px-6 py-3 text-sm font-body font-medium text-white"
             >
-              Norton, Zimbabwe
-            </motion.span>
+              Begin Your Stay
+              <ArrowUpRight className="w-5 h-5" />
+            </Link>
           </motion.div>
-
-          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-light leading-[0.95] mb-8">
-            {["Where Every", "Moment", "Matters."].map((line, i) => (
-              <span key={line} className="block overflow-hidden">
-                <motion.span
-                  className={
-                    i === 1
-                      ? "block italic text-brand-300 font-normal"
-                      : "block font-light"
-                  }
-                  custom={i}
-                  initial={reduce ? { opacity: 0 } : "hidden"}
-                  animate={reduce ? { opacity: 1 } : "visible"}
-                  variants={lineVariants}
-                >
-                  {line}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
-
-          <motion.p
-            className="font-body text-xl text-white/75 leading-relaxed mb-12 max-w-lg"
-            initial={{ opacity: 0, y: reduce ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.05, ease: luxuryEase }}
+          <Link
+            href="/restaurant#reservations"
+            className="inline-flex items-center gap-2 text-sm font-body font-medium text-white/90 hover:text-white transition-colors"
           >
-            An extraordinary estate where the warmth of Zimbabwe meets world-class hospitality.
-          </motion.p>
+            Reserve a Table
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
 
-          <motion.div
-            className="flex flex-wrap gap-4"
-            initial={{ opacity: 0, y: reduce ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.25, ease: luxuryEase }}
-          >
-            <motion.div whileHover={reduce ? undefined : { scale: 1.03 }} whileTap={reduce ? undefined : { scale: 0.97 }}>
-              <Link href="/accommodation" className="btn-gold text-base px-8 py-4">
-                Begin Your Stay
-              </Link>
-            </motion.div>
-            <motion.div whileHover={reduce ? undefined : { scale: 1.03 }} whileTap={reduce ? undefined : { scale: 0.97 }}>
-              <Link href="/restaurant#reservations" className="btn-white text-base px-8 py-4">
-                Reserve a Table
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
+        {/* Glass stat cards */}
+        <motion.div
+          className="flex items-stretch gap-4 mt-10"
+          {...entrance(reduce, 1.35)}
+        >
+          {stats.map(({ icon: Icon, value, label }) => (
+            <div
+              key={value}
+              className="liquid-glass rounded-[1.25rem] p-5 w-[220px] flex flex-col items-start text-left"
+            >
+              <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+              <div className="mt-5 font-display italic text-4xl text-white tracking-tight leading-none">
+                {value}
+              </div>
+              <div className="text-xs text-white font-body font-light mt-2">
+                {label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
 
+      {/* Offerings row */}
       <motion.div
-        className="relative z-10 flex justify-center pb-10"
+        className="relative z-10 flex flex-col items-center gap-4 pb-8 px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.8 }}
+        transition={{ duration: 1, delay: 1.5 }}
         style={reduce ? undefined : { opacity: contentOpacity }}
       >
-        <a
-          href="#story"
-          className="flex flex-col items-center gap-3 group"
-          aria-label="Scroll to explore"
-        >
-          <span className="font-body text-[11px] tracking-[0.3em] uppercase text-white/40 group-hover:text-white/70 transition-colors">
-            Discover
-          </span>
-          <motion.div
-            className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent origin-top"
-            animate={reduce ? undefined : { scaleY: [0.4, 1, 0.4] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </a>
+        <div className="liquid-glass rounded-full px-3.5 py-1 text-xs font-body font-medium text-white">
+          One estate, every occasion — Norton, Zimbabwe
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 md:gap-x-14 gap-y-2">
+          {offerings.map(({ name, href }) => (
+            <Link
+              key={name}
+              href={href}
+              className="font-display italic text-white/90 hover:text-white text-2xl md:text-3xl tracking-tight transition-colors"
+            >
+              {name}
+            </Link>
+          ))}
+        </div>
       </motion.div>
     </section>
   );
