@@ -65,23 +65,23 @@ export default function GalleryPage() {
         </motion.div>
       </section>
 
-      {/* Filter tabs */}
-      <section className="sticky top-20 z-30 bg-white/80 supports-[backdrop-filter]:bg-white/65 backdrop-blur-xl backdrop-saturate-150 border-b border-stone-200/70 shadow-sm">
+      {/* Filter tabs — floating glass pill bar */}
+      <section className="sticky top-20 z-30 px-4 md:px-8 py-2">
         <div className="container-site">
-          <div className="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
+          <div className="liquid-glass bg-charcoal/55 rounded-full px-2 py-2 flex gap-1 overflow-x-auto scrollbar-hide">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
                 className={`relative flex-shrink-0 px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-colors ${
-                  active === cat ? "text-gold" : "text-stone-600 hover:text-stone-900"
+                  active === cat ? "text-charcoal" : "text-white/80 hover:text-white"
                 }`}
               >
-                {/* Shared layout transition: the dark pill glides between filters */}
+                {/* Shared layout transition: the white pill glides between filters */}
                 {active === cat && (
                   <motion.span
                     layoutId="gallery-filter-pill"
-                    className="absolute inset-0 rounded-full bg-stone-900 shadow-md"
+                    className="absolute inset-0 rounded-full bg-white shadow-md"
                     transition={{ type: "spring", stiffness: 420, damping: 34 }}
                   />
                 )}
