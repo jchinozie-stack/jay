@@ -76,23 +76,23 @@ const packages = [
 
 export function ExperiencePackages() {
   return (
-    <section className="py-32 lg:py-40 bg-earth-50" aria-labelledby="packages-heading">
+    <section className="py-32 lg:py-40 bg-charcoal grain-overlay" aria-labelledby="packages-heading">
       <div className="container-site">
         <Reveal amount={0.12}>
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <div className="section-label mb-4">Curated Experiences</div>
-          <h2 id="packages-heading" className="font-display text-5xl lg:text-6xl text-charcoal font-light leading-tight">
+          <div className="section-label text-brand-400 mb-4">Curated Experiences</div>
+          <h2 id="packages-heading" className="font-display text-5xl lg:text-6xl text-white font-light leading-tight">
             We&apos;ve Thought of
-            <span className="block italic text-brand-500"> Everything</span>
+            <span className="block italic text-brand-300"> Everything</span>
           </h2>
-          <p className="font-body text-earth-600 mt-6 text-lg leading-relaxed">
+          <p className="font-body text-earth-300 mt-6 text-lg leading-relaxed">
             Each package is crafted to take the guesswork out of planning. All that&apos;s left for you to do is arrive.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {packages.map((pkg) => (
-            <article key={pkg.name} className={`group relative overflow-hidden ${pkg.featured ? "ring-2 ring-brand-500" : ""}`}>
+            <article key={pkg.name} className={`group relative overflow-hidden liquid-glass rounded-[1.25rem] ${pkg.featured ? "ring-1 ring-brand-400/70" : ""}`}>
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={pkg.image}
@@ -114,12 +114,12 @@ export function ExperiencePackages() {
                 <div className="absolute bottom-4 left-4 text-3xl">{pkg.emoji}</div>
               </div>
 
-              <div className="bg-white p-8">
-                <h3 className="font-display text-2xl text-charcoal mb-5">{pkg.name}</h3>
+              <div className="p-8">
+                <h3 className="font-display text-2xl text-white mb-5">{pkg.name}</h3>
                 <ul className="space-y-2 mb-8">
                   {pkg.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-3 font-body text-sm text-earth-600">
-                      <span className="text-brand-500 mt-0.5 shrink-0">✓</span>
+                    <li key={h} className="flex items-start gap-3 font-body text-sm text-earth-300">
+                      <span className="text-brand-400 mt-0.5 shrink-0">✓</span>
                       {h}
                     </li>
                   ))}
@@ -132,7 +132,7 @@ export function ExperiencePackages() {
           ))}
         </div>
 
-        <p className="text-center font-body text-sm text-earth-500 mt-8">
+        <p className="text-center font-body text-sm text-earth-400 mt-8">
           All packages are flexible — contact us and we&apos;ll tailor everything to your exact needs.
         </p>
         </Reveal>
