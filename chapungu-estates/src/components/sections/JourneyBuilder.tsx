@@ -154,7 +154,7 @@ export function JourneyBuilder() {
                 const selected = selections[key] === opt.value;
                 return (
                   <button key={opt.value} onClick={() => select(key, opt.value)}
-                    className={`p-6 border text-left transition-all duration-200 ${selected ? "border-brand-500 bg-brand-900/40" : "border-earth-800 bg-earth-900/50 hover:border-brand-600 hover:bg-earth-900"}`}>
+                    className={`liquid-glass rounded-[1.25rem] p-6 text-left transition-all duration-200 ${selected ? "bg-brand-500/30 ring-1 ring-brand-400/60" : "bg-charcoal/30 hover:bg-white/5"}`}>
                     <div className="text-3xl mb-3">{opt.emoji}</div>
                     <div className="font-display text-xl text-white mb-1">{opt.label}</div>
                     <div className="font-body text-xs text-earth-500">{opt.desc}</div>
@@ -168,7 +168,7 @@ export function JourneyBuilder() {
           </div>
         ) : itinerary ? (
           <div className="max-w-2xl mx-auto">
-            <div className="bg-earth-900 border border-earth-700 p-8">
+            <div className="liquid-glass bg-charcoal/30 rounded-[1.25rem] p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <div className="section-label text-brand-400 mb-2">Your Chapungu Experience</div>
@@ -189,14 +189,14 @@ export function JourneyBuilder() {
               </div>
               <div className="flex gap-3 flex-wrap">
                 <Link href={itinerary.cta.href} className="btn-gold flex-1 text-center justify-center">{itinerary.cta.label}</Link>
-                <Link href="/contact" className="border border-earth-600 text-earth-300 hover:text-white hover:border-brand-500 px-4 py-2.5 font-body text-sm transition-colors">Ask Us Anything</Link>
+                <Link href="/contact" className="liquid-glass rounded-full px-5 py-2.5 text-earth-200 hover:text-white font-body text-sm inline-flex items-center transition-colors">Ask Us Anything</Link>
               </div>
             </div>
             <div className="flex gap-2 justify-center mt-6 flex-wrap">
               {Object.entries(selections).map(([k, v]) => {
                 const stepData = steps.find(s => s.id === k);
                 const opt = stepData?.options.find(o => o.value === v);
-                return opt ? <span key={k} className="font-body text-xs bg-earth-800 text-earth-300 px-3 py-1 rounded-full">{opt.emoji} {opt.label}</span> : null;
+                return opt ? <span key={k} className="liquid-glass font-body text-xs text-earth-200 px-3 py-1 rounded-full">{opt.emoji} {opt.label}</span> : null;
               })}
             </div>
           </div>
@@ -204,7 +204,7 @@ export function JourneyBuilder() {
           <div className="text-center">
             <p className="text-earth-500 font-body mb-4">We'd love to help you plan the perfect visit.</p>
             <div className="flex gap-3 justify-center">
-              <button onClick={reset} className="border border-earth-600 text-earth-300 hover:text-white px-4 py-2.5 font-body text-sm transition-colors">Try again</button>
+              <button onClick={reset} className="liquid-glass rounded-full px-5 py-2.5 text-earth-200 hover:text-white font-body text-sm transition-colors">Try again</button>
               <Link href="/contact" className="btn-gold">Talk to us</Link>
             </div>
           </div>
