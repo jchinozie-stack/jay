@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Heart, MapPin, Award } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 
 const pillars = [
@@ -24,6 +27,7 @@ const pillars = [
 ];
 
 export function WhyChooseUs() {
+  const reduce = useReducedMotion();
   return (
     <section
       className="relative min-h-screen overflow-hidden bg-charcoal"
@@ -65,11 +69,26 @@ export function WhyChooseUs() {
         >
           {pillars.map(({ icon: Icon, title, tags, body }) => (
             <StaggerItem key={title}>
-              <div className="liquid-glass rounded-[1.25rem] p-6 min-h-[360px] flex flex-col h-full">
+              <motion.div
+                className="liquid-glass rounded-[1.25rem] p-6 min-h-[360px] flex flex-col h-full"
+                whileHover={reduce ? undefined : "hover"}
+                initial="rest"
+                animate="rest"
+                variants={{
+                  rest: { y: 0 },
+                  hover: { y: -8, transition: { type: "spring", stiffness: 300, damping: 24 } },
+                }}
+              >
                 <div className="flex items-start justify-between gap-4">
-                  <span className="liquid-glass rounded-[0.75rem] w-11 h-11 flex items-center justify-center shrink-0">
+                  <motion.span
+                    className="liquid-glass rounded-[0.75rem] w-11 h-11 flex items-center justify-center shrink-0"
+                    variants={{
+                      rest: { rotate: 0, scale: 1 },
+                      hover: { rotate: -8, scale: 1.08, transition: { type: "spring", stiffness: 320, damping: 18 } },
+                    }}
+                  >
                     <Icon className="h-6 w-6 text-white" strokeWidth={1.5} />
-                  </span>
+                  </motion.span>
                   <span className="flex flex-wrap justify-end gap-1.5 max-w-[70%]">
                     {tags.map((tag) => (
                       <span
@@ -92,7 +111,7 @@ export function WhyChooseUs() {
                     {body}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </StaggerItem>
           ))}
         </Stagger>
